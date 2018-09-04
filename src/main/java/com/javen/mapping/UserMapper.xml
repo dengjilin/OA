@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.javen.dao.UserDao">
+	<resultMap id="BaseResultMap" type="com.javen.entity.User">
+	<id column="ID" jdbcType="DOUBLE" property="id"/>
+		<result column="USERNAME" jdbcType="VARCHAR" property="username"  />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password"  />
+	</resultMap>
+	<select id="login" parameterType="java.util.Map" resultType="com.javen.entity.User">
+		SELECT
+		*
+		FROM
+		USERS
+		WHERE
+		USERNAME=#{username}
+		AND
+		PASSWORD=#{password}
+	</select>
+
+</mapper>
