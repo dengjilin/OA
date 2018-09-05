@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.javen.dao.UserInfoDao">
+	<resultMap id="BaseResultMap"
+		type="com.javen.entity.UserInfo">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+		<result column="REALNAME" jdbcType="VARCHAR" property="realName" />
+		<result column="SEX" jdbcType="DOUBLE" property="sex" />
+		<result column="AGE" jdbcType="DOUBLE" property="age" />
+		<result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="BIRTHDAY" jdbcType="VARCHAR" property="birthday" />
+		<result column="ENTRYTIME" jdbcType="VARCHAR" property="entryTime" />
+		<result column="STATUS" jdbcType="DOUBLE" property="status" />
+	</resultMap>
+
+	<select id="queryUserInfo" parameterType="java.lang.String"
+		resultType="java.util.Map">
+		select
+		id,account,password,REALNAME,SEX,AGE,MOBILE,EMAIL,BIRTHDAY,ENTRYTIME,STATUS
+		from userinfo where id=#{id}
+
+	</select>
+	<insert id="insetInfo" parameterType="com.javen.entity.UserInfo">
+		insert into userinfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id !=null">
+			    ID,
+			</if>
+			
+			<if test="account !=null">
+				ACCOUNT,
+			</if>
+			
+			<if test="realName !=null">
+			REALNAME,
+			</if>
+			
+			<if test="sex !=null">
+			SEX,
+			</if>
+			
+			<if test="age !=null">
+			AGE,
+			</if>
+			
+			<if test="mobile !=null">
+			MOBILE,
+			</if>
+			
+			<if test="email !=null">
+			EMAIL,
+			</if>
+			
+			<if test="birthday !=null">
+			BIRTHDAY,
+			</if>
+			
+			<if test="entryTime !=null">
+			ENTRYTIME,
+			</if>
+			
+			<if test="status !=null">
+			STATUS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+			  #{id,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="account != null">
+				#{account,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="password !=null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="realName !=null" >
+			#{realName,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="sex !=null">
+			#{sex,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="age !=null">
+			#{age,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="mobile !=null">
+			#{mobile,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="email !=null">
+			#{email,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="birthday !=null">
+			#{birthday,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="entryTime !=null">
+			#{entryTime,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="status !=null">
+			#{status,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateInfo" parameterType="com.javen.entity.UserInfo">
+	update USERINFO
+	<set>
+		<if test="account !=null">
+			  ACCOUNT=#{account,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="password !=null">
+				PASSWORD=#{password,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="realName !=null">
+			REALNAME=#{realName,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="sex !=null">
+			SEX=#{sex,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="age !=null">
+			AGE=#{age,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="mobile !=null">
+			MOBILE=#{mobile,jdbcType=DOUBLE},
+			</if>
+			
+			<if test="email !=null">
+			EMAIL=#{email,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="birthday !=null">
+			BIRTHDAY=#{birthday,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="entryTime !=null">
+			ENTRYTIME=#{entryTime,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="status !=null">
+			STATUS=#{status,jdbcType=DOUBLE},
+			</if>
+	</set>
+	where id=#{id,jdbcType=VARCHAR}
+	</update>
+	<delete id="deleteUserInfo" parameterType="java.lang.String">
+	 delete from USERINFO where id=#{id,jdbcType=VARCHAR}
+	</delete>
+	
+	
+</mapper>
